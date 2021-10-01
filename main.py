@@ -37,7 +37,6 @@ def getTable():
       cols = [ele.text.strip() for ele in cols]
       data.append([ele for ele in cols if ele]) # Get rid of empty values
 
-  print(data)
   return data #Returns table
 
 #Setting up the slash command
@@ -62,7 +61,7 @@ def getTable():
 async def _tableEPL(ctx:SlashContext):
   table=tabulate.tabulate(getTable(),headers='firstrow',tablefmt='pretty')
   print(table)
-  await ctx.send("```"+table+"```")
+  await ctx.send("```"+table+"```") #In quotes otherwise the columns are misaligned
 
 #Run bot!
 client.run(bot_token)  
